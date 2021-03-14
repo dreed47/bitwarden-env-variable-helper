@@ -1,8 +1,8 @@
-name: 'BitWarden Env Variable Helper'
-description: 'Greet someone'
+name: 'BitWarden Helper'
+description: 'BitWarden Env Variable Helper'
 inputs:
   bwkeys:  # id of input
-    description: 'Keys'
+    description: 'BitWarden Keys'
     required: true
     default: ''
 runs:
@@ -12,15 +12,4 @@ runs:
       run: |
         #echo $GITHUB_ACTION_PATH
         $GITHUB_ACTION_PATH/export-variables.sh "${{ inputs.bwkeys }}"
-      shell: bash
-    - id: bwkeys-print
-      run: |
-          IFS='|' read -ra arrIN <<< "${{ inputs.bwkeys }}"
-          for i in "${arrIN[@]}"
-          do
-            :
-            echo "$i"2
-            echo "$i"2="oooooo" >> $GITHUB_ENV
-            #echo "$i="$(bw list items --search $i | jq '.[0] | .notes' -r) >> $GITHUB_ENV
-          done
       shell: bash
