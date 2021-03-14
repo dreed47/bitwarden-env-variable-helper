@@ -1,6 +1,8 @@
 echo "Hello All-Yall!!!!!!"
 echo "input is $1"
 
+bw sync
+
 IFS='|' read -ra arrIN <<< "$1"
 for i in "${arrIN[@]}"
 do
