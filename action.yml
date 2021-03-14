@@ -19,8 +19,8 @@ runs:
           for i in "${arrIN[@]}"
           do
             :
-            echo "$i"
-            echo "$i"="oooooo" >> $GITHUB_ENV
+            echo "$i"2
+            echo "$i"2="oooooo" >> $GITHUB_ENV
             #echo "$i="$(bw list items --search $i | jq '.[0] | .notes' -r) >> $GITHUB_ENV
           done
       shell: bash
