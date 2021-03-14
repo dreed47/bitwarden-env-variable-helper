@@ -11,16 +11,15 @@ runs:
     - id: Run-export-variable-script
       run: |
         #echo $GITHUB_ACTION_PATH
-        $GITHUB_ACTION_PATH/export-variables.sh ${{ inputs.bwkeys }}
+        $GITHUB_ACTION_PATH/export-variables.sh "${{ inputs.bwkeys }}"
       shell: bash
     - id: bwkeys-print
       run: |
-          echo "::set-output name=mykeys::$(echo ${{ inputs.bwkeys }})"
           IFS='|' read -ra arrIN <<< "${{ inputs.bwkeys }}"
           for i in "${arrIN[@]}"
           do
             :
-            echo $i
+            echo "$i"
             echo "$i"="huhuhuhuhuh" >> $GITHUB_ENV
             #echo "$i="$(bw list items --search $i | jq '.[0] | .notes' -r) >> $GITHUB_ENV
           done
