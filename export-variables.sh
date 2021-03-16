@@ -1,6 +1,8 @@
-echo "Hello All-Yall!!!!!!"
+echo "Export variables to GITHUB_ENV"
+echo "Access these variables with ${{ env.SOMEVARIABLE }}"
 echo "input is $1"
 
+# sync BitWarden to ensure the latest content
 bw sync
 
 IFS='|' read -ra arrIN <<< "$1"
