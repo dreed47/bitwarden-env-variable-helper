@@ -11,9 +11,6 @@ do
     #echo "$i"
     #echo "$i"="kkkkk" >> $GITHUB_ENV
     #echo "$i="$(bw list items --search $i | jq '.[0] | .notes' -r) >> $GITHUB_ENV
-    export i="ID_RSA_PRIVATE"
-    export GITHUB_ENV="testfile1"
-
     echo -e "$i=\n$(bw list items --search $i | jq '.[0] | .notes' -r)" >> $GITHUB_ENV
     #printf "%s" "ID_RSA_PRIVATE="$(bw list items --search ID_RSA_PRIVATE | jq '.[0] | .notes' -r) >> testfile
     #printenv "ID_RSA_PRIVATE="$(bw list items --search ID_RSA_PRIVATE | jq '.[0] | .notes' -r) >> $GITHUB_ENV
