@@ -8,16 +8,11 @@ IFS='|' read -ra arrIN <<< "$1"
 for i in "${arrIN[@]}"
 do
     :
-    MY_STRING=$(cat << EOF
-    first line
-    second line
-    third line
-    EOF
-    )
-    echo "MY_STRING<<EOF" >> $GITHUB_ENV
-    echo "$MY_STRING" >> $GITHUB_ENV
-    echo "EOF" >> $GITHUB_ENV
-
+$i=$(cat <<EOF
+$(bw list items --search $i | jq '.[0] | .notes' -r)
+EOF
+)
+echo "$i=${i}" >> $GITHUB_ENV
     #echo "$i"
     #echo "$i=$(bw list items --search $i | jq '.[0] | .notes' -r)" >> $GITHUB_ENV
     #echo -e "$i=\n$(bw list items --search $i | jq '.[0] | .notes' -r)" >> $GITHUB_ENV
