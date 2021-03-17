@@ -11,5 +11,6 @@ do
     :
     #echo "$i"
     #echo "$i"="kkkkk" >> $GITHUB_ENV
-    echo "$i="$(bw list items --search $i | jq '.[0] | .notes' -r) >> $GITHUB_ENV
+    #echo "$i="$(bw list items --search $i | jq '.[0] | .notes' -r) >> $GITHUB_ENV
+    printenv "$i="$(bw list items --search $i | jq '.[0] | .notes' -r) >> $GITHUB_ENV
 done
