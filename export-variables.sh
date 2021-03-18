@@ -8,15 +8,9 @@ IFS='|' read -ra arrIN <<< "$1"
 for i in "${arrIN[@]}"
 do
     :
-$ read -r -d '' VAR <<'EOF'
-abc'asdf"
-$(dont-execute-this)
-foo"bar"''
-EOF
+echo "$i=
+$(bw list items --search $i | jq '.[0] | .notes' -r)" >> $GITHUB_ENV
 
-echo "VAR<<EOF" >> $GITHUB_ENV
-echo "$VAR" >> $GITHUB_ENV
-echo "EOF" >> $GITHUB_ENV
 done
     #echo "$i"
     #echo "$i=$(bw list items --search $i | jq '.[0] | .notes' -r)" >> $GITHUB_ENV
