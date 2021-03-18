@@ -5,11 +5,15 @@ inputs:
     description: 'BitWarden Keys'
     required: true
     default: ''
+  prefix:  # id of input
+    description: 'Key prefixes'
+    required: true
+    default: ''
 runs:
   using: "composite"
   steps:
     - id: Run-export-variable-script
       run: |
         #echo $GITHUB_ACTION_PATH
-        $GITHUB_ACTION_PATH/export-variables.sh "${{ inputs.bwkeys }}"
+        $GITHUB_ACTION_PATH/export-variables.sh "${{ inputs.bwkeys }}" "${{ inputs.prefix }}"
       shell: bash
