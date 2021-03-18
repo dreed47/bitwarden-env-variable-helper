@@ -1,6 +1,6 @@
 echo "Export variables to GITHUB_ENV"
 echo "key list= $1"
-echo "prefix is $2"
+echo "key prefix is $2"
 
 # sync BitWarden to ensure the latest content
 bw sync
