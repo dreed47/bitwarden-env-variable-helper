@@ -8,11 +8,16 @@ IFS='|' read -ra arrIN <<< "$1"
 for i in "${arrIN[@]}"
 do
     :
-$i=$(cat <<EOF
-$(bw list items --search $i | jq '.[0] | .notes' -r)
-EOF
-)
-echo "$i=${i}" >> $GITHUB_ENV
+          MY_STRING=$(cat << EOF
+          first line
+          second line
+          third line
+          EOF
+          )
+          echo "MY_STRING<<EOF" >> $GITHUB_ENV
+          echo "$MY_STRING" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+done
     #echo "$i"
     #echo "$i=$(bw list items --search $i | jq '.[0] | .notes' -r)" >> $GITHUB_ENV
     #echo -e "$i=\n$(bw list items --search $i | jq '.[0] | .notes' -r)" >> $GITHUB_ENV
@@ -21,4 +26,3 @@ echo "$i=${i}" >> $GITHUB_ENV
     #printenv "ID_RSA_PRIVATE="$(bw list items --search ID_RSA_PRIVATE | jq '.[0] | .notes' -r) >> $GITHUB_ENV
     #printenv "$i="$(bw list items --search $i | jq '.[0] | .notes' -r) >> $GITHUB_ENV
     #echo "ID_RSA_PRIVATE=$(bw list items --search ID_RSA_PRIVATE | jq '.[0] | .notes' -r)" >> testfile
-done
