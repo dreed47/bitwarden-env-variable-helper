@@ -9,7 +9,7 @@ for i in "${arrIN[@]}"
 do
     :
     echo "$i<<EOF" >> $GITHUB_ENV
-    "$(bw list items --search $i | jq '.[0] | .notes' -r)" >> $GITHUB_ENV
+    bw list items --search $i | jq '.[0] | .notes' -r >> $GITHUB_ENV
     echo "EOF" >> $GITHUB_ENV
 
     #echo "$i="$(bw list items --search $i | jq '.[0] | .notes' -r) >> $GITHUB_ENV
